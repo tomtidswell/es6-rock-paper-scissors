@@ -1,0 +1,255 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  height:100vh;
+  margin: 0;
+  font-family: 'Share Tech Mono', monospace;
+}
+nav{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+footer{
+  min-height: 200px;
+  padding: 20px;
+  color: white;
+  background-color: #312f39;
+}
+footer h2{
+  font-family: 'Share Tech Mono', monospace;
+}
+footer p{
+  font-size: 1.5em;
+  padding-bottom: 30px;
+}
+
+main{
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 600px;
+  background-image: url('../images/building.jpg');
+  background-size: cover;
+  background-position: center;
+  border-bottom: 4px solid black;
+}
+
+main section{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+  background-color: rgba(186, 183, 196, 0.6);
+  padding: 10px;
+  height: 300px;
+}
+
+header, article{
+  width: 100%;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+h2,h3,p{
+  margin: 0;
+}
+
+h2{
+  margin: 0;
+  font-size: 2.5em;
+  font-weight: normal;
+  font-family: 'Monoton', cursive;
+}
+main p{
+  font-size: 2em;
+}
+
+label{
+  color: black;
+  overflow: hidden;
+}
+input{
+  display: none;
+}
+
+.types i{
+  opacity: 0.5;
+  font-size: 2em;
+  margin: 5px;
+  text-align: center;
+}
+.types input:checked + i{
+  opacity: 1;
+}
+.choices{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px 0;
+  font-size: 3em;
+  width: 400px;
+  align-items: center;
+  justify-content: space-around;
+}
+.choices label{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.choices i{
+  opacity: 0.4;
+  padding: 10px;
+  border: 2px solid black;
+  transition: all 2s;
+}
+.choices input:checked + i{
+  opacity: 1;
+  transition: all 0.5s;
+}
+.computer.player .choices i{
+  opacity: 0.1;
+}
+.computer.player.thinking .types input:checked + i{
+  opacity: 0.8;
+  animation: computerThinking 1s linear infinite alternate;
+}
+.computer.player.thinking .choices label:nth-child(1) i{
+  animation: computerChoice 1s linear 0.2s infinite alternate;
+}
+.computer.player.thinking .choices label:nth-child(2) i{
+  animation: computerChoice 1s linear 0.4s infinite alternate;
+}
+.computer.player.thinking .choices label:nth-child(3) i{
+  animation: computerChoice 1s linear 0.6s infinite alternate;
+}
+.computer.player.thinking .choices label:nth-child(4) i{
+  animation: computerChoice 1s linear 0.8s infinite alternate;
+}
+.computer.player.thinking .choices label:nth-child(5) i{
+  animation: computerChoice 1s linear 1s infinite alternate;
+}
+.computer.player.decided .choices input:checked + i{
+  opacity: 1;
+}
+
+#status-field{
+  max-width: 300px;
+}
+
+.player-status{
+  height:100px;
+}
+
+
+section.player:not(.computer):not(.thinking):not(.decided) .player-status:before{
+  content: 'Make a choice';
+}
+.computer.thinking .player-status:before{
+  content: 'Roboto is thinking...';
+}
+.computer.decided .player-status:before{
+  content: 'Roboto has decided...';
+}
+.player.won .player-status:before{
+  content: 'Winner!';
+}
+.player.lost .player-status:before{
+  content: 'Loser :(';
+}
+.player.draw .player-status:before{
+  content: 'It was a draw';
+}
+#player1.lost{
+  transform-origin: 130% 50%;
+  animation: playerLost 3s ease;
+}
+#player2.lost{
+  transform-origin: -30% 50%;
+  animation: playerLost 3s ease;
+}
+
+button{
+  position: relative;
+  width: 100px;
+  font-size: 1.8em;
+  padding: 5px;
+  margin: 10px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  color: lightgrey;
+  font-family: 'Share Tech Mono', monospace;
+  z-index: 2;
+}
+
+button#reset-button{
+  color: black;
+  background-color: #e1e6e2;
+}
+button#go-button.ready{
+  color: black;
+  background-color: #b7c4ba;
+}
+
+@media screen and (max-width: 1000px) {
+  main{
+    flex-flow: column;
+    height: auto;
+    min-height: 100vh;
+    background-image: url('../images/building-vertical.jpg');
+  }
+  .choices{
+    width: 320px;
+    font-size: 2em;
+  }
+  #player1.lost{
+    transform-origin: 50% 130%;
+    animation: playerLost 3s ease;
+  }
+  #player2.lost{
+    transform-origin: 50% -30%;
+    animation: playerLost 3s ease;
+  }
+}
+
+
+@keyframes computerThinking {
+  from{
+    transform: scale(1);
+  }
+  to{
+    transform: scale(2) translateX(-5px);
+    color: red;
+  }
+}
+@keyframes computerChoice {
+  50%{
+    transform: scale(1);
+    opacity: 0.1;
+  }
+  100%{
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+@keyframes playerLost {
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.01);
+  }
+}
+@keyframes playerLost {
+  0%{
+    transform: scale(1);
+  }
+  100%{
+    transform: scale(0.01) ;
+  }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Rock Paper Scissors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Monoton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <script src="js/app.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <main>
+      <section id="player1" class="player">
+        <header>
+          <h2>Player 1</h2>
+          <form class="types">
+            <label>
+              <input type="radio" name="p1type" value="human" checked>
+              <i class="fas fa-user"></i>
+            </label>
+            <label>
+              <input type="radio" name="p1type" value="computer">
+              <i class="fas fa-robot"></i>
+            </label>
+          </form>
+        </header>
+        <form class="choices">
+          <label>
+            <input type="radio" name="p1choice" value="rock">
+            <i class="fas fa-hand-rock"></i>
+          </label>
+          <label>
+            <input type="radio" name="p1choice" value="paper">
+            <i class="fas fa-hand-paper"></i>
+          </label>
+          <label>
+            <input type="radio" name="p1choice" value="scissors">
+            <i class="fas fa-hand-scissors"></i>
+          </label>
+          <label>
+            <input type="radio" name="p1choice" value="lizard">
+            <i class="fas fa-hand-lizard"></i>
+          </label>
+          <label>
+            <input type="radio" name="p1choice" value="spock">
+            <i class="fas fa-hand-spock"></i>
+          </label>
+        </form>
+        <p class="player-status"></p>
+        <article>
+          <h3>Score</h3>
+          <p class="scores"></p>
+        </article>
+      </form>
+      </section>
+      <nav>
+        <button type="button" name="button" id="go-button">GO</button>
+        <button type="button" name="button" id="reset-button">Reset</button>
+      </nav>
+      <section id="player2" class="player decided">
+        <header>
+          <h2>Player 2</h2>
+          <form class="types">
+            <label>
+              <input type="radio" name="p2type" value="computer" checked>
+              <i class="fas fa-robot"></i>
+            </label>
+          </form>
+        </header>
+        <form class="choices">
+          <label>
+            <input type="radio" name="p2choice" value="rock">
+            <i class="fas fa-hand-rock"></i>
+          </label>
+          <label>
+            <input type="radio" name="p2choice" value="paper">
+            <i class="fas fa-hand-paper"></i>
+          </label>
+          <label>
+            <input type="radio" name="p2choice" value="scissors">
+            <i class="fas fa-hand-scissors"></i>
+          </label>
+          <label>
+            <input type="radio" name="p2choice" value="lizard">
+            <i class="fas fa-hand-lizard"></i>
+          </label>
+          <label>
+            <input type="radio" name="p2choice" value="spock">
+            <i class="fas fa-hand-spock"></i>
+          </label>
+        </form>
+        <p class="player-status"></p>
+        <article>
+          <h3>Score</h3>
+          <p class="scores"></p>
+        </article>
+      </section>
+    </main>
+    <footer>
+      <h2>About</h2>
+      <p>This game took some inspiration from the Android OS, as I was developing it, I imagined that I was playing against a robot trapped inside my phone.</p>
+      <p>I have used this game to test out different approaches to selecting and applying transitions and animations. Most of the interactive functionality within this game is controlled by adding and removing classes on the p1 and p2 boards. My aim was to keep the javascript minimal. </p>
+      <p>Additionally, I used objects to define the victory logic for the game, to avoid a sprawling IF/ELSE condition. Doing this has allowed me to easily expand the rock/paper/scissors concept to include lizard and spock with very little extra code.</p>
+    </footer>
+  </body>
+</html>
